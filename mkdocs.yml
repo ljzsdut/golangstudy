@@ -1,0 +1,57 @@
+# pip install mkdocs
+# pip install mkdocs-material
+# 
+# Project information
+site_name: 'golang笔记'
+site_description: 'golang笔记'
+# site_author: 'Martin Donath'
+# site_url: 'https://squidfunk.github.io/mkdocs-material/'
+
+# Repository
+repo_name: 'golang笔记'
+repo_url: 'https://github.com/ljzsdut/golangstudy'
+
+# Copyright
+copyright: 'Copyright &copy; 2019 - 2020 ljzsdut'
+
+# Configuration
+theme:
+  # name: 'material'
+  name: null
+  custom_dir: 'material'
+  language: 'zh'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo:
+    icon: "\uE80C"
+  feature:
+    tabs: false
+
+# Customization
+extra:
+  # manifest: 'manifest.webmanifest'
+  social:
+    - type: 'github'
+      link: 'https://github.com/ljzsdut'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+
+nav:
+    - Home: index.md
+    - Go基础:
+      - 01_变量与常量: 01_变量与常量.md
+      - 02_基本数据类型: 02_基本数据类型.md
+      - 03_基本数据类型的类型转换: 03_基本数据类型的类型转换.md
+      - 04_运算符: 04_运算符.md
+      - 05_流程控制: 05_流程控制.md
+

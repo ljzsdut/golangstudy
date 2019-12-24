@@ -310,8 +310,6 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         05_流程控制
@@ -325,11 +323,16 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    流程控制
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
@@ -403,6 +406,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-breakcontinue" class="md-nav__link">
+    3 break与continue终止循环
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-break" class="md-nav__link">
+    3.1 break终止
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32continue" class="md-nav__link">
+    3.2continue终止
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-goto" class="md-nav__link">
+    4 goto跳转
+  </a>
   
 </li>
       
@@ -436,11 +473,16 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    流程控制
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
@@ -517,6 +559,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-breakcontinue" class="md-nav__link">
+    3 break与continue终止循环
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-break" class="md-nav__link">
+    3.1 break终止
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32continue" class="md-nav__link">
+    3.2continue终止
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-goto" class="md-nav__link">
+    4 goto跳转
+  </a>
+  
+</li>
+      
       
       
       
@@ -536,9 +612,11 @@
                   <a href="https://github.com/ljzsdut/golangstudy/edit/master/docs/05_流程控制.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
+                  <h1>05_流程控制</h1>
+                
                 <div class="toc">
 <ul>
-<li><a href="#_1">流程控制</a><ul>
+<li><a href="#_1">流程控制</a></li>
 <li><a href="#1">1 分支控制</a><ul>
 <li><a href="#11-if-else">1.1 if-else分支控制语句</a></li>
 <li><a href="#111">1.1.1 单分支控制</a></li>
@@ -552,8 +630,6 @@
 <li><a href="#22-for-range">2.2 for-range循环</a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a href="#3-breakcontinue">3 break与continue终止循环</a><ul>
 <li><a href="#31-break">3.1 break终止</a></li>
 <li><a href="#32continue">3.2continue终止</a></li>
@@ -562,7 +638,7 @@
 <li><a href="#4-goto">4 goto跳转</a></li>
 </ul>
 </div>
-<h1 id="_1">流程控制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_1">流程控制<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>三大流程控制语句：</p>
 <p>(1) 顺序控制：程序从上到下逐行的执行，中间没有任何判断和跳转。</p>
 <p>(2) 分支控制</p>
@@ -814,8 +890,8 @@
 </pre></div>
 
 
-<h1 id="3-breakcontinue">3 break与continue终止循环<a class="headerlink" href="#3-breakcontinue" title="Permanent link">&para;</a></h1>
-<h2 id="31-break">3.1 break终止<a class="headerlink" href="#31-break" title="Permanent link">&para;</a></h2>
+<h2 id="3-breakcontinue">3 break与continue终止循环<a class="headerlink" href="#3-breakcontinue" title="Permanent link">&para;</a></h2>
+<h3 id="31-break">3.1 break终止<a class="headerlink" href="#31-break" title="Permanent link">&para;</a></h3>
 <p>(1) break语句用于终止某个语句块的终止，用于终止for循环和switch语句。终止后直接跳出整个for循环或switch语句。</p>
 <p>(2) break语句可以出现在多层嵌套for语句中，在Golang中，break默认是终止当前层(最近一层)语句块，也可以通过标签指明要终止的是哪一层的语句块。</p>
 <div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -833,10 +909,10 @@
 </pre></div>
 
 
-<h2 id="32continue">3.2continue终止<a class="headerlink" href="#32continue" title="Permanent link">&para;</a></h2>
+<h3 id="32continue">3.2continue终止<a class="headerlink" href="#32continue" title="Permanent link">&para;</a></h3>
 <p>(1) continue语句用于结束本次循环，继续执行下次循环。即执行到continue后，不再执行循环体内后面的代码，直接跳转到循环变量迭代。</p>
 <p>(2) continue语句出现在多层嵌套的for循环语句中时，可以通过标签指明要跳过的是哪一层的循环。用法同break。</p>
-<h1 id="4-goto">4 goto跳转<a class="headerlink" href="#4-goto" title="Permanent link">&para;</a></h1>
+<h2 id="4-goto">4 goto跳转<a class="headerlink" href="#4-goto" title="Permanent link">&para;</a></h2>
 <p><strong>基本语法：</strong></p>
 <div class="codehilite"><pre><span></span><span class="k">goto</span> <span class="nx">label1</span>
 <span class="o">...</span><span class="p">.</span>

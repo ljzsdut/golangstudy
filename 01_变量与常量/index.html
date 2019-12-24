@@ -1,0 +1,1059 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="golang笔记">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="..">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>01_变量与常量 - golang笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="golang笔记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              golang笔记
+            </span>
+            <span class="md-header-nav__topic">
+              
+                01_变量与常量
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ljzsdut/golangstudy/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    golang笔记
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="golang笔记" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    golang笔记
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ljzsdut/golangstudy/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    golang笔记
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Go基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Go基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        01_变量与常量
+      </label>
+    
+    <a href="./" title="01_变量与常量" class="md-nav__link md-nav__link--active">
+      01_变量与常量
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 变量的本质
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1内存的介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 变量的本质
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-golang" class="md-nav__link">
+    2 Golang变量的定义、赋值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 变量声明：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 变量赋值：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 变量使用细节
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-golang" class="md-nav__link">
+    3 Golang值类型和指针类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 值类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 引用类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 值类型与指针类型的内存分析：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 引用类型的使用示例：交换两个整数变量的值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../02_基本数据类型/" title="02_基本数据类型" class="md-nav__link">
+      02_基本数据类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03_基本数据类型的类型转换/" title="03_基本数据类型的类型转换" class="md-nav__link">
+      03_基本数据类型的类型转换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../04_运算符/" title="04_运算符" class="md-nav__link">
+      04_运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_流程控制/" title="05_流程控制" class="md-nav__link">
+      05_流程控制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 变量的本质
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1内存的介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 变量的本质
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-golang" class="md-nav__link">
+    2 Golang变量的定义、赋值
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 变量声明：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 变量赋值：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 变量使用细节
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-golang" class="md-nav__link">
+    3 Golang值类型和指针类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 值类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 引用类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 值类型与指针类型的内存分析：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 引用类型的使用示例：交换两个整数变量的值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ljzsdut/golangstudy/edit/master/docs/01_变量与常量.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#_1">变量</a><ul>
+<li><a href="#1">1 变量的本质</a><ul>
+<li><a href="#11">1.1内存的介绍</a></li>
+<li><a href="#12">1.2 变量的本质</a></li>
+</ul>
+</li>
+<li><a href="#2-golang">2 Golang变量的定义、赋值</a><ul>
+<li><a href="#21">2.1 变量声明：</a></li>
+<li><a href="#22">2.2 变量赋值：</a></li>
+<li><a href="#23">2.3 变量使用细节</a></li>
+</ul>
+</li>
+<li><a href="#3-golang">3 Golang值类型和指针类型</a><ul>
+<li><a href="#31">3.1 值类型</a></li>
+<li><a href="#32">3.2 引用类型</a></li>
+<li><a href="#33">3.3 值类型与指针类型的内存分析：</a></li>
+<li><a href="#34">3.4 引用类型的使用示例：交换两个整数变量的值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_2">常量</a><ul>
+<li><a href="#1_1">1 常量的声明与赋值</a></li>
+<li><a href="#2">2 常量使用细节</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="_1">变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="1"><strong>1 变量的本质</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11"><strong>1.1内存的介绍</strong><a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>​       内存是一块存储空间，而且它具有地址编号（可被寻址）。寻址空间一般指的是CPU对于<a href="https://baike.baidu.com/item/内存寻址/1012006">内存寻址</a>的能力，通俗地说，就是能CPU最多用到多少内存的一个问题。数据在<a href="https://baike.baidu.com/item/存储器/1583185">存储器</a>(RAM)中存放是有规律的 ，CPU在运算的时候需要把数据提取出来就需要知道数据存放在哪里，这时候就需要挨家挨户的找，这就叫做寻址，但如果地址太多超出了CPU的能力范围，CPU就无法找到数据了。CPU最大能查找多大范围的地址叫做寻址能力 ，CPU的寻址能力以<a href="https://baike.baidu.com/item/字节/1096318">字节</a>为单位 ，如32位寻址的CPU(32位操作系统)可以寻址2的32次方大小的地址也就是4G，这也是为什么32位的操作系统CPU最大能搭配4G内存的原因 ，再多的话CPU就找不到了。 </p>
+<h3 id="12"><strong>1.2 变量的本质</strong><a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p>​       变量本质上就是代表一个”<strong>被命名的、可操作的内存空间</strong>”，空间的位置是确定的，但是里面放置什么值不确定。该空间有自己的名称(变量名)和类型(变量类型)。我们可通过变量名来访问“对应的内存空间”，从而操纵这个“内存空间”存储的值。</p>
+<p>​       变量和内存之间的关系：</p>
+<p>1) 对于编译型的语言，通过<strong>变量声明</strong>来申请(变量类型决定了申请多大的固定大小的连续空间)和命名内存空间(变量名称决定了内存空间的别名）。如golang中的：<code>var a int</code></p>
+<p>2) 通过变量名(内存地址的别名)访问内存空间。变量名就是（一段连续）内存空间的别名（是一个门牌号）</p>
+<p>3) 变量的值(内存空间存储的值)可以直接或间接地修改</p>
+<ul>
+<li>
+<p>直接：通过变量名进行修改。如：a=10</p>
+</li>
+<li>
+<p>间接：内存有地址编号，拿到地址编号也可以修改内存(如指针，一个特殊的变量(内存空间)，存储的其他的内存空间的地址)，如golang中。ptr=&a;*ptr=10</p>
+</li>
+</ul>
+<h2 id="2-golang"><strong>2 Golang变量的定义、赋值</strong><a class="headerlink" href="#2-golang" title="Permanent link">&para;</a></h2>
+<h3 id="21"><strong>2.1 变量声明：</strong><a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>var关键字开头，变量名后指定变量类型。声明后不赋值，则使用默认0值。</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span>  <span class="c1">// 不同类型的默认0值是不同的，对int类型的变量会默认初始化为0，对string类型的变量会初始化为空&quot;&quot;，对布尔类型的变量会初始化为false，对指针(引用)类型的变量会初始化为nil，等等。</span>
+</pre></div>
+
+
+<p>批量声明：Golang支持一次性声明多个变量</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">n3</span> <span class="kt">int</span>
+</pre></div>
+
+
+<h3 id="22"><strong>2.2 变量赋值：</strong><a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>对已声明的变量进行赋值：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span>
+<span class="nx">num</span> <span class="p">=</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>变量声明时，同时对其赋值：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">20</span>
+</pre></div>
+
+
+<p>变量类型推导：如果变量声明时直接赋值，可以省略变量的类型，根据值的类型自行判断变量的类型</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="p">=</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>短变量声明（short variable declaration）：<strong>在函数内部</strong>，定义一个或多个变量时，不使用var关键字而使用“:=“ ，并根据它们的初始值为这些变量赋予适当类型的<strong>语句</strong>。</p>
+<div class="codehilite"><pre><span></span><span class="nx">num</span> <span class="o">:=</span> <span class="mi">20</span>   <span class="c1">// 上面语句本质上是两条语句var num int；num = 20 ，因为Golang中只有声明语句可以单独存在函数体外，所以上面的语句因为包含赋值语句，只能在函数体内使用。</span>
+            <span class="c1">// 注意：该方式要求等号左边的变量列表中至少有一个变量未声明。如果所有的变量都已经声明过，则报错，因为同一个作用域内不能重复声明同名变量。 </span>
+</pre></div>
+
+
+<p>批量声明＋赋值：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">n1</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">n3</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="kd">var</span> <span class="nx">n1</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">n2</span> <span class="p">=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;tom&quot;</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nx">n1</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">n2</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;tom&quot;</span><span class="p">,</span> <span class="mi">3</span>
+<span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">n1</span> <span class="p">=</span> <span class="mi">3</span> <span class="c1">// PYPE可选，此处，n1后面省略了TYPE</span>
+    <span class="nx">n2</span> <span class="p">=</span> <span class="mi">4</span>
+    <span class="nx">n3</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h3 id="23"><strong>2.3 变量使用细节</strong><a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>1)  变量重新赋值时，只能将与变量类型相同的类型的常量赋值给变量名。否则就需要进行类型转换。下面的示例会报错：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="nx">num</span> <span class="p">=</span> <span class="s">&quot;ljzsdut&quot;</span>  <span class="c1">//将字符串赋值给int型的变量num会报错</span>
+</pre></div>
+
+
+<p>２) 变量在同一个作用域内不能重复声明。下面的示例会报错：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nx">num</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;ljzsdut&quot;</span>
+</pre></div>
+
+
+<p>下面也会报错：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="nx">num</span> <span class="o">:=</span> <span class="mi">30</span>
+</pre></div>
+
+
+<p>３) 变量的三要素：变量名+变量类型+变量值</p>
+<p>４) Golang中，如果变量名、常量名、函数名的首字母大写，则该名称可以被导出，即可以被别的包访问；如果首字母是小写的，则只能在本包中使用。 这个特性类似于Java的public关键字。</p>
+<p>５) Golang变量名建议使用驼峰命名法。形如：“xxxYyyZzz....”</p>
+<p>６) 匿名变量：<code>_,num := 5,6</code>，将值５赋值给匿名变量'_'，'_'<code>其实就是一个占位符，表示丢弃该变量。因为Golang中，任何定义的变量都必须使用，而且函数可以有多个返回值，如果某个函数返回两个值，而我们只需要使用第二个返回值时，此时就可以使用匿名变量丢弃第一个变量。</code>_,err := funcTest()`</p>
+<h2 id="3-golang"><strong>3 Golang值类型和指针类型</strong><a class="headerlink" href="#3-golang" title="Permanent link">&para;</a></h2>
+<p>Golang中，变量分为<strong>值类型</strong>和<strong>引用类型</strong>：</p>
+<h3 id="31"><strong>3.1 值类型</strong><a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>基本的数据类型，变量存的就是值，也叫值类型。通常在栈内存中分配。</p>
+<blockquote>
+<ol>
+<li>值类型主要有：int系列、float系列、bool类型、string类型、数组、结构体</li>
+<li>对于值类型的变量，获取变量的地址，使用&amp;。比如：var num int，获取num的地址：&amp;num</li>
+</ol>
+</blockquote>
+<h3 id="32"><strong>3.2 引用类型</strong><a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>引用类型变量存的是一个地址，这个地址指向的空间存储着值。内存通常在堆内存上分配。比如：<code>var ptr *int = &amp;num</code>，其中ptr就是一个指针类型变量，指针类型是引用类型的一种，其类型是*int，表示是一个存放int数据的指针类型，ptr指针本身的值是&amp;num，ptr指针指向的值是变量num的值。</p>
+<blockquote>
+<ol>
+<li>引用类型主要有：指针类型（<code>*TYPE</code>）、slice切片、map映射、chan管道、interface接口</li>
+<li>对于指针类型的变量，获取指针变量(地址)所指向的变量，使用。比如：定义指针类型变量 <code>var ptr *int</code>  ，使用*prt表示ptr指向的变量的值。</li>
+<li>指针类型变量大小为1个机器字长(64位操作系统为64bit，即8字节)</li>
+<li>指针与地址的区别：地址是内存地址，使用字节来描述的内存地址；指针是带类型的。</li>
+</ol>
+</blockquote>
+<p><strong>new、make关键字</strong>：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">n</span> <span class="o">*</span><span class="kt">int</span>  
+    <span class="o">*</span><span class="nx">n</span> <span class="p">=</span> <span class="mi">10</span>  <span class="c1">// panic: runtime error: invalid memory address or nil pointer dereference，因为此时变量还没有分配内存，无法进行赋值操作。</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>int是一个值类型，*int则表示一个值类型的指针。如果声明一个值类型的指针时，使用new(TYPE)；如果声明一个像slice那样的引用类型的指针，则使用make(TYPE,...)，make在分配内存同时，还会初始化一个引用类型（切片、映射、或通道）指向的对象。所以上例正确的写法如下：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">n</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+    <span class="o">*</span><span class="nx">n</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>打印一下地址：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">n</span> <span class="o">*</span><span class="kt">int</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>  <span class="c1">// &lt;nil&gt;</span>
+    <span class="nx">n</span><span class="p">=</span><span class="nb">new</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>  <span class="c1">// 0xc00000a0c8</span>
+    <span class="o">*</span><span class="nx">n</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="33"><strong>3.3 值类型与指针类型的内存分析：</strong><a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">num</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>                    <span class="c1">//定义一个值类型变量</span>
+    <span class="kd">var</span> <span class="nx">ptr</span> <span class="o">*</span><span class="kt">int</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">num</span>                 <span class="c1">//定义一个指针类型的变量ptr，并将其值设置为num变量的地址。</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ptr_value:&quot;</span><span class="p">,</span> <span class="nx">ptr</span><span class="p">)</span>      <span class="c1">//输出：ptr_value: 0xc000012098</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ptr_var_value:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">ptr</span><span class="p">)</span> <span class="c1">//输出：ptr_var_value: 10</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;num_addr:&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">num</span><span class="p">)</span>      <span class="c1">//输出：num_addr: 0xc000012098</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ptr_addr:&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">ptr</span><span class="p">)</span>      <span class="c1">//输出：ptr_addr: 0xc000006028</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>上例的内存示意图：</strong></p>
+<p><img alt="1566273349943" src="../01_变量与常量.assets/1566273349943.png" /></p>
+<h3 id="34"><strong>3.4 引用类型的使用示例：交换两个整数变量的值</strong><a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// 使用指针方式进行交互两个整数的值</span>
+<span class="c1">// var a *int --&gt;是个指针:表示变量a为一个引用(或称指针),该引用指向一个int类型的数据</span>
+<span class="c1">//</span>
+<span class="c1">// *a --&gt;是个数据结构:如果变量a为一个指针,*a表示该指针指向的数据结构</span>
+<span class="c1">// &amp;a --&gt;是个指针:如果变量a是一个数据结构,&amp;a表示指向止戈数据结构的指针</span>
+
+<span class="kd">func</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tmp</span> <span class="o">:=</span> <span class="o">*</span><span class="nx">a</span>
+    <span class="o">*</span><span class="nx">a</span> <span class="p">=</span> <span class="o">*</span><span class="nx">b</span>
+    <span class="o">*</span><span class="nx">b</span> <span class="p">=</span> <span class="nx">tmp</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">100</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="mi">200</span>
+    <span class="nx">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">b</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>  <span class="c1">//200 100</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="_2">常量<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>常量是相对于变量而言，常量是恒定不变的值，多用于定义<strong>程序运行期间</strong>不会改变的值。</p>
+<h2 id="1_1"><strong>1 常量的声明与赋值</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
+<p>常量的声明类似于变量的声明，只需要将var关键字替换为const关键字即可。</p>
+<p>const关键字开头，常量名后指定数据类型。常量在声明的时候必须进行初始化。常量声明后，其值不可修改。</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="nx">pi</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.1415926</span>
+</pre></div>
+
+
+<p>常量类型推导：</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="nx">pi</span> <span class="p">=</span> <span class="mf">3.1415926</span>
+</pre></div>
+
+
+<p>批量声明：</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">c</span> <span class="p">=</span> <span class="mi">3</span>
+    <span class="nx">d</span> <span class="p">=</span> <span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h2 id="2"><strong>2 常量使用细节</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>(1) 常量表达式的值在编译期计算，而不是在运行期，所以常量值是在编译期就确定的。所以常量的赋值表达式不能使用那些只能在运行期才能确定值的函数。每种常量的潜在类型都是基础类型：boolean、string、数字。</p>
+<p>(2) 常量间的所有算术运算、逻辑运算和比较运算的结果也是常量，对常量的类型转换操作返回结果仍是常量；函数<code>len()、cap()、real()、imag()、complex()、unsafe.Sizeof()</code>等调用返回值也是常量。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="o">:=</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">len</span> <span class="p">=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">len</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>(3) 一个常量的声明也可以包含一个类型和一个值，但是如果没有显式指明类型，那么将从右边的表达式推断类型。</p>
+<p>(4) 如果是批量声明的常量，除了第一个外其它的常量右边的初始化表达式都可以省略，如果省略初始化表达式则表示使用前面常量的初始化表达式写法，对应的常量类型也一样的。例如：</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// 第一行必须给定值，不可省略</span>
+    <span class="nx">b</span>
+    <span class="nx">c</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">d</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// &quot;1 1 2 2&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>如果只是简单地复制右边的常量表达式，其实并没有太实用的价值。但是它可以带来其它的特性，那就是iota常量生成器语法。</p>
+<p>(5) 常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化的常量，但是不用每行都写一遍初始化表达式。</p>
+<p>常量的初始化规则与枚举：</p>
+<blockquote>
+<ol>
+<li>在定义常量组时，如果不提供初始值，则表示将使用上行的表达式。第一行必须给定初始值。</li>
+<li>iota是常量的计数器，可以理解为是const组中每个行的索引号。从0开始，自动递增1。</li>
+<li>每遇到一个const关键字，iota就会重置为0</li>
+<li>通过初始化规则与iota可以达到枚举的效果</li>
+</ol>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">Sunday</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">Monday</span>
+    <span class="nx">Tuesday</span>
+    <span class="nx">Wednesday</span>
+    <span class="nx">Thursday</span>
+    <span class="nx">Friday</span>
+    <span class="nx">Saturday</span>
+<span class="p">)</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Sunday</span><span class="p">,</span> <span class="nx">Monday</span><span class="p">,</span> <span class="nx">Tuesday</span><span class="p">,</span> <span class="nx">Wednesday</span><span class="p">,</span> <span class="nx">Thursday</span><span class="p">,</span> <span class="nx">Friday</span><span class="p">,</span> <span class="nx">Saturday</span><span class="p">)</span> <span class="c1">// 0 1 2 3 4 5 6</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">b</span>
+    <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span> <span class="p">=</span> <span class="kc">iota</span><span class="p">,</span> <span class="kc">iota</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// &quot;0 1 2 2&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">(</span>
+        <span class="nx">a</span><span class="p">=</span><span class="sc">&#39;A&#39;</span>
+        <span class="nx">b</span>
+        <span class="nx">c</span><span class="p">=</span><span class="kc">iota</span>
+        <span class="nx">d</span>
+    <span class="p">)</span>
+    <span class="kd">const</span> <span class="p">(</span>
+        <span class="nx">aa</span><span class="p">=</span><span class="sc">&#39;A&#39;</span>
+        <span class="nx">bb</span><span class="p">=</span><span class="kc">iota</span>
+        <span class="nx">cc</span><span class="p">=</span><span class="sc">&#39;B&#39;</span>
+        <span class="nx">dd</span><span class="p">=</span><span class="kc">iota</span>
+    <span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">,</span><span class="nx">d</span><span class="p">)</span> <span class="c1">// 65 65 2 3</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">aa</span><span class="p">,</span><span class="nx">bb</span><span class="p">,</span><span class="nx">cc</span><span class="p">,</span><span class="nx">dd</span><span class="p">)</span> <span class="c1">//65 1 66 3</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">n1</span> <span class="p">=</span> <span class="kc">iota</span>   <span class="c1">//0</span>
+    <span class="nx">n2</span>          <span class="c1">//1</span>
+    <span class="nx">_</span>           <span class="c1">// 使用_跳过某个值,等同于&quot;_ = iota&quot;</span>
+    <span class="nx">n3</span>          <span class="c1">//3</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="kc">iota</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">iota</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1">// 1 2</span>
+    <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span>                      <span class="c1">// 2 3</span>
+    <span class="nx">e</span><span class="p">,</span> <span class="nx">f</span>                      <span class="c1">// 3 4</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>iota使用示例：</p>
+<div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">KB</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kc">iota</span><span class="p">)</span>
+    <span class="nx">MB</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kc">iota</span><span class="p">)</span>
+    <span class="nx">GB</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kc">iota</span><span class="p">)</span>
+    <span class="nx">TB</span>
+    <span class="nx">PB</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">GB</span><span class="p">)</span>  <span class="c1">//1073741824</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="nx">GB</span><span class="p">)</span>  <span class="c1">//3221225472</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>(6) 有６种字面值常量是无类型的常量类型（了解）。</p>
+<p>​       Go语言的常量有个不同寻常之处。虽然一个常量可以有任意有一个确定的基础类型，例如int或float64，或者是类似time.Duration这样命名的基础类型（通过<code>const A int = 128</code> 进行声明常量的基础类型），但是许多常量并没有一个明确的基础类型。这里有６种未明确类型的常量类型，分别是无类型的布尔型、无类型的整数、无类型的字符、无类型的浮点数、无类型的复数、无类型的字符串。编译器为这些没有明确的基础类型的数字常量提供比基础类型更高精度的算术运算；通过延迟明确常量的具体类型，无类型的常量不仅可以提供更高的运算精度，而且可以直接用于更多的表达式而不需要显式的类型转换。</p>
+<p>例如，例子中的ZiB和YiB的值已经超出任何Go语言中整数类型能表达的范围，但是它们依然是合法的常量，而且可以像下面常量表达式依然有效（译注：YiB/ZiB是在编译期计算出来的，并且结果常量是1024，是Go语言int变量能有效表示的）：</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">YiB</span><span class="o">/</span><span class="nx">ZiB</span><span class="p">)</span> <span class="c1">// &quot;1024&quot;</span>
+</pre></div>
+
+
+<p>只有常量可以是无类型的。当一个无类型的常量被赋值给一个变量的时候，或当含有无类型常量的表达式中含有明确类型的值，无类型的常量将会被隐式转换为对应的类型，如果转换合法的话。例如：</p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mi">212</span> <span class="c1">// untyped integer -&gt; float64</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">((</span><span class="nx">f</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">// untyped integer -&gt; float64</span>
+
+<span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="m">0i</span> <span class="c1">// untyped complex -&gt; float64 等价于var f float64 = float64(3 + 0i)</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="mi">2</span> <span class="c1">// untyped integer -&gt; float64 等价于 f = float64(2)</span>
+</pre></div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../02_基本数据类型/" title="02_基本数据类型" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                02_基本数据类型
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 ljzsdut
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ljzsdut" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

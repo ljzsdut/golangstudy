@@ -1,0 +1,1444 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="golang笔记">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="..">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>02_基本数据类型 - golang笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="golang笔记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              golang笔记
+            </span>
+            <span class="md-header-nav__topic">
+              
+                02_基本数据类型
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ljzsdut/golangstudy/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    golang笔记
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="golang笔记" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    golang笔记
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ljzsdut/golangstudy/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    golang笔记
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Go基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Go基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../01_变量与常量/" title="01_变量与常量" class="md-nav__link">
+      01_变量与常量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        02_基本数据类型
+      </label>
+    
+    <a href="./" title="02_基本数据类型" class="md-nav__link md-nav__link--active">
+      02_基本数据类型
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 整形
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 整形分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 整形兄弟类型间的类型转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 整形的不同进制表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 特殊的整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 整形的细节说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 浮点型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 浮点数与复数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 浮点型常量有两种表现形式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 浮点数细节说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 布尔型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 布尔类型介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 布尔类型的逻辑运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 字符串
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 字符串本质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41_1" class="md-nav__link">
+    4.1 字符串定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 字符串操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    4.3.1 字符串长度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    4.3.2 字符串连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    4.3.3 字符串的截取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#434" class="md-nav__link">
+    4.3.4 字符串比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#435" class="md-nav__link">
+    4.3.5 字符串修改
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#436" class="md-nav__link">
+    4.3.6 字符串遍历字符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-strings-" class="md-nav__link">
+    4.4 strings包－操作字符串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 基本数据类型的默认值
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03_基本数据类型的类型转换/" title="03_基本数据类型的类型转换" class="md-nav__link">
+      03_基本数据类型的类型转换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../04_运算符/" title="04_运算符" class="md-nav__link">
+      04_运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_流程控制/" title="05_流程控制" class="md-nav__link">
+      05_流程控制
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 整形
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 整形分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 整形兄弟类型间的类型转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 整形的不同进制表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 特殊的整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 整形的细节说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 浮点型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 浮点数与复数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 浮点型常量有两种表现形式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 浮点数细节说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 布尔型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 布尔类型介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 布尔类型的逻辑运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 字符串
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 字符串本质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41_1" class="md-nav__link">
+    4.1 字符串定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 字符串操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    4.3.1 字符串长度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    4.3.2 字符串连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    4.3.3 字符串的截取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#434" class="md-nav__link">
+    4.3.4 字符串比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#435" class="md-nav__link">
+    4.3.5 字符串修改
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#436" class="md-nav__link">
+    4.3.6 字符串遍历字符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-strings-" class="md-nav__link">
+    4.4 strings包－操作字符串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 基本数据类型的默认值
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ljzsdut/golangstudy/edit/master/docs/02_基本数据类型.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#_1">基本数据类型</a><ul>
+<li><a href="#1">1 整形</a><ul>
+<li><a href="#12">1.2 整形分类</a></li>
+<li><a href="#12_1">1.2 整形兄弟类型间的类型转换</a></li>
+<li><a href="#13">1.3 整形的不同进制表示</a></li>
+<li><a href="#14">1.4 特殊的整形</a></li>
+<li><a href="#15">1.5 整形的细节说明</a></li>
+</ul>
+</li>
+<li><a href="#2">2 浮点型</a><ul>
+<li><a href="#21">2.1 浮点数与复数</a></li>
+<li><a href="#22">2.2 浮点型常量有两种表现形式：</a></li>
+<li><a href="#23">2.3 浮点数细节说明</a></li>
+</ul>
+</li>
+<li><a href="#3">3 布尔型</a><ul>
+<li><a href="#31">3.1 布尔类型介绍</a></li>
+<li><a href="#32">3.2 布尔类型的逻辑运算符</a></li>
+</ul>
+</li>
+<li><a href="#4">4 字符串</a><ul>
+<li><a href="#41">4.1 字符串本质</a></li>
+<li><a href="#41_1">4.1 字符串定义</a></li>
+<li><a href="#43">4.3 字符串操作</a><ul>
+<li><a href="#431">4.3.1 字符串长度</a></li>
+<li><a href="#432">4.3.2 字符串连接</a></li>
+<li><a href="#433">4.3.3 字符串的截取</a></li>
+<li><a href="#434">4.3.4 字符串比较</a></li>
+<li><a href="#435">4.3.5 字符串修改</a></li>
+<li><a href="#436">4.3.6 字符串遍历字符</a></li>
+</ul>
+</li>
+<li><a href="#44-strings-">4.4 strings包－操作字符串</a></li>
+</ul>
+</li>
+<li><a href="#5">5 基本数据类型的默认值</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="_1">基本数据类型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>​       虽然从底层而言，所有的数据都是由比特组成，但计算机一般操作的是固定大小的数，如整数、浮点数、比特数组、内存地址等。进一步将这些数组织在一起，就可表达更多的对象，例如数据包、像素点、诗歌，甚至其他任何对象。Go语言提供了丰富的数据组织形式，这依赖于Go语言内置的数据类型。这些内置的数据类型，兼顾了硬件的特性和表达复杂数据结构的便捷性。</p>
+<p>​       Go语言将数据类型分为四类：基础类型、复合类型、引用类型和接口类型。基础类型，包括：数字、字符串和布尔型。复合数据类型：数组和结构体，是通过组合简单类型，来表达更加复杂的数据结构。引用类型包括指针、切片、字典、函数、通道，虽然数据种类很多，但它们都是对程序中一个变量或状态的间接引用。这意味着对任一引用类型数据的修改都会影响所有该引用的拷贝。(Go语言的数值类型包括整形数、浮点数和复数。每种数值类型都决定了对应的大小范围和是否支持正负符号。)</p>
+<h2 id="1"><strong>1 整形</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="12">1.2 整形分类<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p>​       Go语言同时提供了有符号和无符号类型的整数运算。这里有<code>int8、int16、int32和int64</code>四种截然不同大小的有符号整形数类型，分别对应8、16、32、64bit大小的有符号整形数，与此对应的是<code>uint8、uint16、uint32和uint64</code>四种无符号整形数类型。</p>
+<p>​       还有两种依赖于CPU位数的类型：有符号和无符号整数<code>int和uint</code>，它们分别表示一个机器字长。在32位CPU上，一个机器字长为32bit，共4字节，在64位CPU上，一个机器字长为64bit，共8字节。</p>
+<blockquote>
+<p>除了int和uint依赖于CPU架构，还有一种uintptr也是依赖于机器字长的。这种无符号的整数类型uintptr，没有指定具体的bit大小但是足以容纳指针。uintptr类型只有在底层编程是才需要，特别是Go语言和C语言函数库或操作系统接口相交互的地方。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>有符号整形</th>
+<th>无符号整形</th>
+<th>特殊类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int8</td>
+<td>uint8</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>uint16</td>
+<td></td>
+</tr>
+<tr>
+<td>int32</td>
+<td>uint32</td>
+<td>rune</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>uint64</td>
+<td></td>
+</tr>
+<tr>
+<td>int</td>
+<td>unit</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>uintptr（了解）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="12_1"><strong>1.2 整形兄弟类型间的类型转换</strong><a class="headerlink" href="#12_1" title="Permanent link">&para;</a></h3>
+<p>整形中，以上涉及到的的所有子类型，都是不同类型的兄弟类型。其中int和int32也是不同的类型，即使int的大小 </p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">798</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="kt">int32</span>
+    <span class="c1">// b = a                //cannot use a (type int) as type int32 in assignment</span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="nb">int32</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="13"><strong>1.3 整形的不同进制表示</strong><a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<p>在整数加上0前缀表示这是8进制，例如<code>077</code>。加上前缀0x表示这是16进制，例如<code>0x0c</code>，使用e符号可以表示这是一个科学计数法，如<code>1e3 = 1000</code>,<code>6.023e23 = 6.023 x 10^23</code>。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 十进制表示方法</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">798</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">//798</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%b\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">//1100011110</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%o\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">//1436</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">//31e</span>
+
+    <span class="c1">// 八进制表示方法：在整数加上0前缀</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="mo">077</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">//63      十进制</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%b\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">//111111  二进制</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%o\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">//77      八进制</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">//3f      十六进制</span>
+
+    <span class="c1">// 十六进制表示方法：加上前缀0x</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="p">=</span> <span class="mh">0x0c</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">//12</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="14">1.4 特殊的整形<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>​       Golang中，字符必须使用单引号，且必须只能是单个字符。所以byte/rune类型经常被称为character类型。所以，当整形类型存储的是以<strong>单引号包围</strong>的字符（包括unicode字符）时，它会将字符转换成它二进制值对应的数值，然后将各字符对应的二进制的数值存储在整形类型中。可见，字符类型的本质是整形，为了更好区分字符类型，Golang中有２个特殊的类型：byte和rune，它们分别是unit8和int32类型的别名。</p>
+<ul>
+<li>
+<p>byte类型是和uint8等价的类型，通常用于表示一个ASCII字符。本质是无符号的1字节整数（0-255），一般用来表示ASCII字符和数值的转换关系。例如，ASCII的字母a表示97。</p>
+</li>
+<li>
+<p>rune类型是和int32等价的类型，通常用于表示一个Unicode码点(Unicode字符)。这两个名称可以互换使用。</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 字符赋值给整形</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">byte</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>        <span class="c1">// a=65</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span>       <span class="c1">// b=97</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="kt">uint32</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>      <span class="c1">// c=65</span>
+    <span class="kd">var</span> <span class="nx">d</span> <span class="kt">int64</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>       <span class="c1">// d=65</span>
+    <span class="kd">var</span> <span class="nx">e</span> <span class="kt">int64</span> <span class="p">=</span> <span class="sc">&#39;我&#39;</span>       <span class="c1">// a=25105</span>
+
+    <span class="c1">//字符赋值给整形时，超出byte的表示范围，会报错</span>
+    <span class="c1">//var f byte = &#39;我&#39;      //报错：constant 25105 overflows byte</span>
+
+    <span class="c1">//可以使用&#39;\u&#39;开头的unicode编码格式表示unicode字符</span>
+    <span class="c1">//\u则代表unicode编码，是一个字符；</span>
+    <span class="c1">//0x开头代表十六进制，实际上就是一个整数；</span>
+    <span class="kd">var</span> <span class="nx">g</span> <span class="kt">byte</span> <span class="p">=</span> <span class="sc">&#39;\u0041&#39;</span>   <span class="c1">// a=65，代表的字符A</span>
+    <span class="kd">var</span> <span class="nx">h</span> <span class="kt">byte</span> <span class="p">=</span> <span class="sc">&#39;\u0041&#39;</span>   <span class="c1">// a=65，代表的字符A</span>
+
+    <span class="c1">//如果想将byte/rune值转换为字符，可以使用string()函数做简单的类型转换</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span><span class="nx">a</span><span class="p">)</span>            <span class="c1">// 输出:A 65</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">),</span><span class="nx">b</span><span class="p">)</span>            <span class="c1">// 输出:a 97</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span><span class="nx">c</span><span class="p">)</span>            <span class="c1">// 输出:A 65</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">),</span><span class="nx">d</span><span class="p">)</span>            <span class="c1">// 输出:A 65</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span><span class="nx">e</span><span class="p">)</span>            <span class="c1">// 输出:我 25105</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="mi">25105</span><span class="p">),</span><span class="mi">25105</span><span class="p">)</span>    <span class="c1">// 输出:我 25105</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">g</span><span class="p">),</span><span class="nx">g</span><span class="p">)</span>            <span class="c1">// 输出:A 65</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">h</span><span class="p">),</span><span class="nx">h</span><span class="p">)</span>            <span class="c1">// 输出:A 65</span>
+
+    <span class="c1">// 整形输出为rune</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%c\n&quot;</span><span class="p">,</span><span class="mi">25105</span><span class="p">)</span>        <span class="c1">//我      输出Unicode字符(character)</span>
+    <span class="c1">//　整形输出为Unicode格式</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%U\n&quot;</span><span class="p">,</span><span class="mi">25105</span><span class="p">)</span>        <span class="c1">//U+6211  输出Unicode格式（是一种转义字符）</span>
+    <span class="c1">//  整形输出为十六进制</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span><span class="mi">25105</span><span class="p">)</span>        <span class="c1">//6211    输出十六进制</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="15">1.5 整形的细节说明<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
+<p>1) Golang整形划分为有符号和无符号，int和unit的大小与操作系统位数有关</p>
+<blockquote>
+<p>a) int8、int16、int32(别名：rune)和int64</p>
+<p>b) uint8(别名：byte)、uint16、uint32和uint64</p>
+</blockquote>
+<p>2) Golang的整形默认声明为int。例如<code>var num = 100</code> ，此时num类型为init。</p>
+<p>3) 如何查看变量的数据类型？</p>
+<blockquote>
+<p>a) fmt.Printf("%T", a)</p>
+<p>b) 使用反射reflect.TypeOf(a)</p>
+</blockquote>
+<p>4) 如何查看变量占用字节数大小？</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;变量类型为：%T\n变量占用的字节数为：%d&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</pre></div>
+
+
+<p>5) Golang的变量使用过程中，在保证程序正确运行的情况下，尽量使用占用空间小的数据类型。例如”年龄”使用uinit8类型即可。</p>
+<p>6) bit：计算机中的最小存储单位；byte：计算机中的基本存储单元。1byte = 8bit</p>
+<h2 id="2">2 浮点型<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21"><strong>2.1 浮点数与复数</strong><a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>float是浮点数(俗称小数)，例如0.0、 3.0、 -3.12、 -3.120等。浮点数在计算机系统中非常复杂，对于学习来说，只需将其认为是数学中的一种小数即可。</p>
+<p>Go中的浮点数类型float有两种：float32)和float64。(就是其他语言中的单精度和双精度)</p>
+<p>complex表示复数类型(虚数)，有complex64和complex128。（了解即可）</p>
+<h3 id="22"><strong>2.2 浮点型常量有两种表现形式</strong>：<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>十进制数形式：如5.12，.512(小数点前面或后面的数字都可能被省略（例如.707或1.）)</p>
+</li>
+<li>
+<p>科学计数法形式：5.1234e2等价于5.1234×102(e也可以写成大写的E)</p>
+</li>
+</ul>
+<h3 id="23"><strong>2.3 浮点数细节说明</strong><a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<ul>
+<li>浮点型默认的浮点型默认声明为float64。</li>
+</ul>
+<blockquote>
+<p>例如<code>var num = 5.2</code> ；此时num类型为float64。一般来说，在程序中需要使用浮点数的时候都使用float64类型，原因有２：一是因为比fload32精度更加精确，二是因为几乎所有包中需要float参数的类型都是float64。</p>
+</blockquote>
+<ul>
+<li>在Go的数学运算表达式中，表达式的结果默认是整型数据，如果想要得到浮点数结果，必须至少让运算的一方写成浮点数格式．</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span>     <span class="c1">// a得到截断的整数：a=1</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">3</span><span class="o">/</span><span class="mf">2.0</span>   <span class="c1">// b为浮点数b=+1.500000e+000</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="c1">// c为浮点数</span>
+    <span class="kd">var</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">2.1</span> <span class="c1">// d为浮点数</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 输出：1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>  <span class="c1">// 输出：1.5</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>  <span class="c1">// 输出：5</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>  <span class="c1">// 输出：5.1</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>浮点数在机器中存放形式：浮点数=符号位+指数位+尾数位</li>
+</ul>
+<blockquote>
+<p>a) 浮点数都是有符号的</p>
+<p>b) 在存储过程中，尾数部分可能丢失，造成精度损失。float32的精度(7个小数位)低于float64(15个小数位)，所以float64类型的值比float32类型的值更精确。</p>
+<p>c) Golang中的浮点型有固定的范围和字段长度，不受操作系统的影响。</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">num1</span> <span class="kt">float32</span> <span class="p">=</span> <span class="o">-</span><span class="mf">123.0000912</span>
+    <span class="kd">var</span> <span class="nx">num2</span> <span class="kt">float64</span> <span class="p">=</span> <span class="o">-</span><span class="mf">123.0000912</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="c1">// -123.00009  尾数部分精度损失</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// -123.0000912</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>浮点数是不精确的。</li>
+</ul>
+<blockquote>
+<p>例如1.01-0.99从数学运算的角度上得到的值是0.02，但实际上的结果是0.020000000000000018(python运算的结果)，在Go中会将其表示为+2.000000e-002。这个结果是一种极限趋近于我们期待值的结果。因为浮点数不精确，所以尽量不要对两个浮点数数进行等值==和不等值!=比较，例如(3.2-2.8) == 0.4返回Flase。如果非要比较，应该通过它们的减法求绝对值，再与一个足够小(不会影响结果)的值做不等比较，例如abs((3.2-2.8)-0.4) &lt; 0.0002返回True。</p>
+</blockquote>
+<h2 id="3">3 布尔型<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31"><strong>3.1 布尔类型介绍</strong><a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>​       Golang中的bool类型的取值<strong>只有</strong>两种：true和false。不可以用0或者非0的数字来代替true和false；bool类型占用1字节。</p>
+<p>​       if语句和for语句的条件部分都是布尔类型的值，并且==和&lt;等比较操作也会产生布尔型的值。</p>
+<blockquote>
+<p>注意：Golang在使用==进行等值比较的时候，<strong>要求两边的数据类型必须相同</strong>，否则报错。如果两边数据类型是接口类型，则它们必须实现相同的接口函数。如果是常量比较，则两边必须是能够兼容的数据类型。</p>
+</blockquote>
+<h3 id="32"><strong>3.2 布尔类型的逻辑运算符</strong><a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>有3种布尔逻辑运算符：<strong>&amp;&amp; || !</strong>，分别别是逻辑与，逻辑或，取反。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">println</span><span class="p">(</span><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">true</span><span class="p">)</span>  <span class="c1">// true</span>
+    <span class="nb">println</span><span class="p">(</span><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">false</span><span class="p">)</span> <span class="c1">// false</span>
+    <span class="nb">println</span><span class="p">(</span><span class="kc">true</span> <span class="o">||</span> <span class="kc">true</span><span class="p">)</span>  <span class="c1">// true</span>
+    <span class="nb">println</span><span class="p">(</span><span class="kc">true</span> <span class="o">||</span> <span class="kc">false</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="nb">println</span><span class="p">(!</span><span class="kc">true</span><span class="p">)</span>         <span class="c1">// false</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>&amp;&amp; 的优先级比 || 高，下面形式的布尔表达式是不需要加小括弧的：</p>
+<div class="codehilite"><pre><span></span><span class="k">if</span>  <span class="sc">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span> <span class="o">||</span>
+    <span class="sc">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;Z&#39;</span> <span class="o">||</span>
+    <span class="sc">&#39;0&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span> <span class="p">{</span>
+        <span class="c1">// ...ASCII letter or digit...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="4">4 字符串<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41"><strong>4.1 字符串本质</strong><a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>​       Go语言源文件总是用UTF8编码，并且Go语言的文本字符串也以UTF8编码的方式处理。Go语言的编码都统一成了utf-8，非常的方便，很统一，再也没有编码乱码的困扰了。</p>
+<p>​       Go中没有专门的字符型数据类型，使用byte来保存单个ASCII字符，使用int32(rune数据类型)来保存多字节字符(汉字)。定义时，使用单引号包围，而且只能包围一个字符。字符的本质就是一个整数类型数字，所以字符可以向数字一样进行数学运算，当然也可以使用<code>fmt.Printf("%c",i)</code>将整形数字输出为字符。</p>
+<div class="codehilite"><pre><span></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span> <span class="sc">&#39;a&#39;</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span> <span class="c1">// A</span>
+</pre></div>
+
+
+<p>​       Golang中的string的本质是一个字节切片：[]byte，其底层是byte数组，每个string其实只占用两个机器字长：一个指针和一个长度。只不过这个指针在Go中完全不可见，所以对我们来说，<strong>string是一个底层byte数组的值类型而非指针类型</strong>。</p>
+<p>​       字符串是一个不可变对象，不变性意味这如果两个字符串共享相同的底层数据的话也是安全的，这使得复制任何长度的字符串代价是低廉的。同样，一个字符串s和对应的子字符串切片s[7:]的操作也可以安全地共享相同的内存，因此字符串切片操作代价也是低廉的。在这两种情况下都没有必要分配新的内存。 下图演示了一个字符串和两个子字符串共享相同的底层数据。</p>
+<p><img alt="1566370558262" src="../02_基本数据类型.assets/1566370558262.png" /></p>
+<p><strong>字符读写磁盘本质探讨：</strong></p>
+<blockquote>
+<p>a) 字符存储到计算机：字符--&gt;对应码值--&gt;依据编码规则转换为二进制--&gt;存储</p>
+<p>b) 从计算机读取字符：读取二进制--&gt;依据编码规则转换为码值--&gt;字符--&gt;读取显示</p>
+<p>说明：字符和码值的对应关系是通过事先编好的字符集决定的</p>
+</blockquote>
+<h3 id="41_1">4.1 字符串定义<a class="headerlink" href="#41_1" title="Permanent link">&para;</a></h3>
+<p>Go中的string类型要使用双引号或反引号包围，它们的区别是：</p>
+<ul>
+<li>
+<p>双引号是弱引用，其内可以使用反斜线开头的<strong>转义符号</strong>，如<code>ab\ncd</code>表示ab后换行加cd</p>
+</li>
+<li>
+<p>反引号是强引用，其内任何符号都被强制解释为字面意义，包括字面的换行。也就是所谓的裸字符串。好处是防止攻击、方便输出一些具有特殊字符的文本(比如源代码)</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">s1</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
+<span class="kd">var</span> <span class="nx">s2</span> <span class="p">=</span> <span class="s">&quot;中国&quot;</span>
+<span class="nx">s3</span> <span class="o">:=</span> <span class="s">`这</span>
+<span class="s">是一个</span>
+<span class="s">多行字符串</span>
+<span class="s">`</span>
+</pre></div>
+
+
+<h3 id="43">4.3 字符串操作<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<h4 id="431">4.3.1 字符串长度<a class="headerlink" href="#431" title="Permanent link">&para;</a></h4>
+<p>len()返回字符串中含有<strong>字节</strong>的个数（注意是字节不是字符），如果要查看字符数量，尤其是含有汉字的字符串的字符处理，可以将字符串先转换为[]rune，然后来判断切片slice的长度。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;中国&quot;</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// 6</span>
+    <span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">))</span> <span class="c1">// 2</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="432">4.3.2 字符串连接<a class="headerlink" href="#432" title="Permanent link">&para;</a></h4>
+<p>方式１：字符串连接符＋</p>
+<p>使用加号<strong>+</strong>连接两段字符串："Hello" + "World"等价于"HelloWorld"。使用＋连接字符串时可以进行换行。例如：</p>
+<div class="codehilite"><pre><span></span><span class="nx">str</span> <span class="o">:=</span> <span class="s">&quot;Beginning string &quot;</span><span class="o">+</span> 
+    <span class="s">&quot;second string&quot;</span>  <span class="c1">// 如要换行，注意+号要放在行尾，不能放在下一行的开始.因为go会自动在行尾添加分号，如果行尾是个+，则不会添加分号。</span>
+</pre></div>
+
+
+<blockquote>
+<p>字符串连接<strong>+</strong>操作符强制认为它两边的都是string类型，所以<code>"abcd" + 2</code>将报错。需要先将int类型的2转换为字符串类型。注意：不能使用<strong>string(2)</strong>的方式转换，因为这种转换方式不能跨大类型转换，只能使用<strong>strconv</strong>包中的函数转换。</p>
+</blockquote>
+<p><strong>方式２：fmt.Sprintf()</strong></p>
+<p>fmt.Sprintf()会返回自定义格式化后的字符串：</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="s">&quot;hello&quot;</span>
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="s">&quot;world&quot;</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>方式3：strings.Join()</strong></p>
+<p>更高效的字符串串接方式是使用<code>strings.Join(a []string, sep string)</code>函数，它可以在缓冲中将字符串切片中的所有字符串使用指定的分隔符串接起来。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">str_arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;love&quot;</span><span class="p">,</span> <span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span><span class="p">}</span>
+    <span class="nx">str</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">str_arr</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="c1">// i love China !</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="433">4.3.3 字符串的截取<a class="headerlink" href="#433" title="Permanent link">&para;</a></h4>
+<p>Golang中的string的本质是一个字节切片，可以使用索引号取部分字符串(按字节计算)，索引号从0开始计算，如<code>"abcd"[1]</code>。从字符串取字符的时候，需要注意的是index按字节计算而非按字符计算。两种取数据方式：</p>
+<div class="codehilite"><pre><span></span><span class="s">&quot;string&quot;</span><span class="p">[</span><span class="nx">x</span><span class="p">]</span>
+
+<span class="s">&quot;string&quot;</span><span class="p">[</span><span class="nx">x</span><span class="p">:</span><span class="nx">y</span><span class="p">]</span>
+</pre></div>
+
+
+<p>1) 第一种方式：索引，将返回索引为x的字节的二进制转换为十进制数值，例如字母将转换为ASCII码，unicode将取对应字节的二进制转换为十进制数值。</p>
+<p>2) 第二种方式：切片，将返回索引为x到y之间的字节对应的字符，Go中采取"左闭右开"的方式，所以所截取部分包括index=x，但不包括index=y。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;abcde&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>         <span class="c1">// 输出&quot;98&quot;</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;我是中国人&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>     <span class="c1">// 输出&quot;136&quot;,截取了字符&#39;我&#39;中３个字节的第２个字节</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;abcde&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>       <span class="c1">// 输出&quot;ab&quot;</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;我是中国人&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1">// 输出&quot;我&quot;</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;abcde&quot;</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>       <span class="c1">// 输出&quot;d&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>分析每一行语句：</p>
+<p>1) 取第2个字节的二进制值，即字符b对应的值，其ASCII为98</p>
+<p>2) 取第2个字节的二进制值，因为中文占用3个字节，所以取第一个字符"我"的第二个字节部分，转换为二进制值，为136</p>
+<p>3) 取第1个字节到第3个字节(不包括)中间的字符，所以输出"ab"</p>
+<p>4) 取前三个字节对应的字符，所以输出"我"</p>
+<p>5) 取第4个字节对应的字符，所以输出d</p>
+<h4 id="434">4.3.4 字符串比较<a class="headerlink" href="#434" title="Permanent link">&para;</a></h4>
+<p>可以使用<code>&lt; 、&lt;=、 &gt;、 &gt;= 、== 、!=</code>对字符串进行比较，它将字符从左到右逐个比对，比较依据是Unicode码点值大小，比较大小会有短路效应。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 字符串比较</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="p">&lt;</span> <span class="s">&quot;B&quot;</span><span class="p">)</span> <span class="c1">// false</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;世&quot;</span> <span class="p">&lt;</span> <span class="s">&quot;界&quot;</span><span class="p">)</span>  <span class="c1">// true</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;世&quot;</span> <span class="p">&lt;</span> <span class="s">&quot;a界&quot;</span><span class="p">)</span> <span class="c1">// false</span>
+
+    <span class="c1">// 字符比较，本质上是数字比较</span>
+    <span class="nb">println</span><span class="p">(</span><span class="sc">&#39;a&#39;</span> <span class="o">==</span> <span class="mi">97</span><span class="p">)</span>  <span class="c1">// true</span>
+    <span class="nb">println</span><span class="p">(</span><span class="sc">&#39;世&#39;</span><span class="p">)</span>        <span class="c1">//19990</span>
+    <span class="nb">println</span><span class="p">(</span><span class="sc">&#39;界&#39;</span><span class="p">)</span>        <span class="c1">//30028</span>
+    <span class="nb">println</span><span class="p">(</span><span class="sc">&#39;世&#39;</span> <span class="p">&lt;</span> <span class="sc">&#39;界&#39;</span><span class="p">)</span>  <span class="c1">// true</span>
+
+    <span class="c1">// 不同数据类型比较会报错</span>
+    <span class="c1">//println(&quot;世&quot; == &#39;世&#39;) // 报错：invalid operation: &quot;世&quot; == &#39;\u4e16&#39; (mismatched types string and rune)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="435">4.3.5 字符串修改<a class="headerlink" href="#435" title="Permanent link">&para;</a></h4>
+<p>字符串是一个不可变对象(底层为字节数组的不可变字节切片)，所以无法在字符串对象上直接修改，只能对字符串变量重新赋值成修改后的新的字符串对象量。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;left foot&quot;</span>
+        <span class="nx">t</span> <span class="o">:=</span> <span class="nx">s</span>
+        <span class="nx">s</span> <span class="o">+=</span> <span class="s">&quot;, right foot&quot;</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// &quot;left foot, right foot&quot;</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="c1">// &quot;left foot&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>因为字符串是不可修改的，因此尝试修改字符串内部字符的操作也是被禁止的：</p>
+<div class="codehilite"><pre><span></span><span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;left foot&quot;</span>
+<span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;L&#39;</span>     <span class="c1">// compile error: cannot assign to s[0]</span>
+</pre></div>
+
+
+<p><strong>如何修改字符串？</strong></p>
+<p>如果要修改字符串中的字符，必须先将字符串转换成一个[]byte或[]rune切片中（无论哪种转换，都会重新分配内存，并拷贝字节数组），然后修改指定索引位置的字符，最后将slice转换回string类型。（处理中文时，使用[]rune。因为[]byte是按字节来处理字符串，[]rune是按字符处理字符串）</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;hello world&quot;</span>
+    <span class="c1">// 强制类型转换</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;H&#39;</span>
+    <span class="nx">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;W&#39;</span>
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>  <span class="c1">//Hello World</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="436">4.3.6 字符串遍历字符<a class="headerlink" href="#436" title="Permanent link">&para;</a></h4>
+<p>可以使用for-range遍历字符串的字符，注意因为for-range遍历字符串时，是针对utf-8字符进行便利的，所以遍历后的每个元素是字符，不是字节。</p>
+<div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span><span class="o">:=</span><span class="s">&quot;Hello, 世界&quot;</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">r</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\t%q\t%d\n&quot;</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">r</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/*输出：</span>
+<span class="cm">0       &#39;H&#39;     72</span>
+<span class="cm">1       &#39;e&#39;     101</span>
+<span class="cm">2       &#39;l&#39;     108</span>
+<span class="cm">3       &#39;l&#39;     108</span>
+<span class="cm">4       &#39;o&#39;     111</span>
+<span class="cm">5       &#39;,&#39;     44</span>
+<span class="cm">6       &#39; &#39;     32</span>
+<span class="cm">7       &#39;世&#39;    19990</span>
+<span class="cm">10      &#39;界&#39;    30028</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<h3 id="44-strings-">4.4 strings包－操作字符串<a class="headerlink" href="#44-strings-" title="Permanent link">&para;</a></h3>
+<p>前面介绍的字符串操作十分简陋，常用的字符串操作一般使用strings包来实现。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">作用</th>
+<th>示例</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Contains(s, substr <a href="#string">string</a>) <a href="#bool">bool</a></td>
+<td align="left">是否含有子串</td>
+<td>strings.Contains("seafood", "foo")</td>
+<td>true</td>
+</tr>
+<tr>
+<td align="left">Count(s, substr <a href="#string">string</a>) <a href="#bool">bool</a></td>
+<td align="left">子串出现次数</td>
+<td>strings.Count("cheese", "e")</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="left">EqualFold(s, t string) bool</td>
+<td align="left">字符串是否相等</td>
+<td>strings.EqualFold("Go", "go")</td>
+<td>true</td>
+</tr>
+<tr>
+<td align="left">Index(s, substr string) int</td>
+<td align="left">子串索引</td>
+<td>strings.Index("abcdefg","b")</td>
+<td>１</td>
+</tr>
+<tr>
+<td align="left">Replace(s, old, new string, n int) string</td>
+<td align="left">字符串替换</td>
+<td>strings.Replace("hellow world","world","世界",1)</td>
+<td>hellow 世界</td>
+</tr>
+<tr>
+<td align="left">Split(s, sep string) []string</td>
+<td align="left">字符串切割</td>
+<td>strings.Split("i love china"," ")</td>
+<td>[i love china]</td>
+</tr>
+<tr>
+<td align="left">ToUpper(s string) string／ToLower(s string) string</td>
+<td align="left">字符串大小写转换</td>
+<td>strings.ToUpper("Hello World")／strings.ToLower("Hello World")</td>
+<td>HELLO WORLD／hello world</td>
+</tr>
+<tr>
+<td align="left">Trim(s string, cutset string) string</td>
+<td align="left">删除子串</td>
+<td>strings.Trim("Hello World!!!","!")</td>
+<td>Hello World</td>
+</tr>
+<tr>
+<td align="left">HasPrefix(s, prefix string) bool／HasSuffix(s, suffix string) bool</td>
+<td align="left">判断前缀\后缀</td>
+<td>strings.HasPrefix("isEnable","is")／strings.HasSuffix("isEnable","able")</td>
+<td>true／true</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：</p>
+<p><code>strings.EqualFold()</code>方法是不区分大小写的；而<code>==</code>比较运算符是区分大小写的。</p>
+<p>strings.Replace(s, old, new string, n int)会使用new子串替换old子串，ｎ表示替换次数．如果n&lt;0 ，表示全部替换．</p>
+<p>strings.Trim(s string, cutset string)注意cutset是一个字符串表示的字符集合．此外还有：TrimSpace()、TrimLeft() 、TrimRight()说明：如果要去除字符串中间的字串，使用Replace()</p>
+</blockquote>
+<h2 id="5"><strong>5 基本数据类型的默认值</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>定义变量时，指定变量类型，声明后不赋值，则使用默认0值。不同类型的0值是不同的，对int类型的变量会默认初始化为0，对string类型的变量会初始化为空""，对布尔类型的变量会初始化为false，对指针(引用)类型的变量会初始化为nil。</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../01_变量与常量/" title="01_变量与常量" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                01_变量与常量
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../03_基本数据类型的类型转换/" title="03_基本数据类型的类型转换" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                03_基本数据类型的类型转换
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 ljzsdut
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ljzsdut" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
